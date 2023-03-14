@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1/projectx', {});
+mongoose.connect('mongodb+srv://felipe:a1b2c3@cluster0.uignrce.mongodb.net/', {});
 
 mongoose.Promise = global.Promise;
 

@@ -1,10 +1,10 @@
-const ProductRepository = require('../repositories/productRepository');
+const repository = require('../repositories/ProductRepository');
 
 exports.get = async (req, res) => {
     try{
-     let products = await ProductRepository.list();
+     const products = await repository.list();
 
-     return res.status(200).send({products});
+     return res.status(200).send(products);
     } catch(err){
         return res.status(500).send({message: 'Falha ao carregar os produtos'});
     }
@@ -13,10 +13,20 @@ exports.get = async (req, res) => {
 exports.post = async (req, res) => {
     try{
         console.log(req.body)
-        let response = await ProductRepository.create(req.body);
-        return res.status(200).send({message: 'Produto cadastrado com sucesso'})
+        const response = await repository.create(req.body);
+        return res.status(200).send(response)
+        
     } catch(err){
         return res.status(500).send("Falha")
     }
 }
 
+// exports.get = async (req, res) => {
+//     try{
+//         const id = req.params.id;
+//         const product = await repository.findById(req.params.id);
+//         return res.status(200).send(product)
+//     } catch(err){
+//           return res.status(500).send({message: 'Falha ao carregar o produto'});
+//      }
+// }
