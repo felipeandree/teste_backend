@@ -1,3 +1,4 @@
+const Product = require("../Models/ProductModel");
 const ProductModel = require("../Models/ProductModel");
 
 exports.list = async () => {
@@ -18,12 +19,30 @@ exports.create = async (data) => {
   }
 };
 
-// exports.findById = async (id) => {
-//     try {
-//         let product = await ProductModel.find({});
-//         return product;
-//     } catch (err) {
-//         return undefined;
-//     }
-// }
+exports.findById = async (id) => { 
+  try { 
+    var products = await Product.findById(id);
+    return products;
+  } catch (err) {
+    return undefined;
+  }
+}
 
+exports.findByIdAndUpdate = async (id, data) => {
+  try {
+    var updates = await Product.findByIdAndUpdate(id, data);
+    return updates;
+    
+  } catch (error) {
+    return undefined;
+  }
+}
+
+exports.findByIdAndDelete = async (id) => {
+  try {
+    var productDeleted = await Product.findByIdAndDelete(id);
+    return productDeleted;
+  } catch (error) {
+    return undefined;
+  }
+}
